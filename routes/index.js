@@ -1,9 +1,31 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const User = require("../models/User");
+const { ensureAuthenticated,viewemployeesAuth } = require("../config/auth");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+
+//Home Page
+router.get('/',ensureAuthenticated, function(req, res, next) {
+  res.render('index');
 });
+
+//Home Page
+router.get('/dashboard', ensureAuthenticated,function(req, res, next) {
+  res.render('dashboard', {user:req.user});
+});
+
+router.get('/viewEmployees',ensureAuthenticated, viewemployeesAuth(["employer"]), function(req, res, next) {
+  const data =  User.find({role: "employee"}).catch((err) => console.error(err));
+  res.render('viewEmployees',{user:req.user, data:data});
+});
+
+// Delete Account
+router.get('/delete' ,ensureAuthenticated,function(req, res, next) {
+
+  res.render('dashboard', {user:req.user});
+});
+
+
+
 
 module.exports = router;

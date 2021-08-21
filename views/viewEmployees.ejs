@@ -1,0 +1,38 @@
+<h1 class="mt-4">Welcome <%= user.name %> </h1>
+
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h1 class="text-center mb-3">View All Contacts</h1>
+
+            <body>
+                <div class="table-data">
+                    <table style="padding: 10px">
+                        <tr>
+                            <th>. &ensp;</th>
+                            <th> Name &ensp;</th>
+                            <th>Email &emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                        </tr>
+
+                        <% var i=1; %> <% data.forEach(function(item){ %>
+                        <tr>
+                            <td><%=i; %></td>
+                            <td><%=item.name %></td>
+                            <td><%=item.email %></td>
+                            
+                        </tr>
+                        <% i++; }) %>
+                    </table>
+                </div>
+            </body>
+
+            <p class="lead mt-5">
+                Back to Dashboard
+                <a class="lead mt-5" href="/dashboard">Click here</a>
+            </p>
+            <p class="lead mt-1">
+                Wanna logout? <a href="/users/logout">Logout</a>
+            </p>
+        </div>
+    </div>
+</div>

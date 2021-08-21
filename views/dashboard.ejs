@@ -1,0 +1,52 @@
+
+<head style="background-color: #edd3bc; ">
+      
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #edd3bc; ">
+      <a class="navbar-brand" href="/dashboard">
+       Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/users/logout">Logout</a>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </nav>
+</head>
+
+
+<body style="background-color: #edd3bc; background-repeat: no-repeat" >
+  <div class="card text-center">
+   
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <%- include ('./partials/messages') %>
+
+      
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Welcome <%= user.name %></span>
+          </div>
+        </div>
+          <form action="/viewEmployees" method="GET" >
+            <div class="form-group" style="font-size: large;" >
+                <label for="View">View all Employees</label>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                  View
+                </button>
+            </div>
+          </form>
+      </div>
+
+  </div>
+
+</body>
