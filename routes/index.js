@@ -14,15 +14,19 @@ router.get('/dashboard', ensureAuthenticated,function(req, res, next) {
   res.render('dashboard', {user:req.user});
 });
 
-router.get('/viewEmployees',ensureAuthenticated, viewemployeesAuth(["employer"]), function(req, res, next) {
-  const data =  User.find({role: "employee"}).catch((err) => console.error(err));
+// View all Employees only for Employers
+router.get('/viewEmployees',ensureAuthenticated, viewemployeesAuth(["employer"]), async function(req, res, next) {
+  const data =  await User.find({role: "employee"}).catch((err) => console.error(err));
   res.render('viewEmployees',{user:req.user, data:data});
 });
 
 // Delete Account
-router.get('/delete' ,ensureAuthenticated,function(req, res, next) {
-
-  res.render('dashboard', {user:req.user});
+router.get('/delete' ,ensureAuthenticated, async function(req, res, next) {
+  await User.findById(req.user._id).catch((err) =>
+  console.error(err));
+  req.logout();
+  req.flash("success_msg", "You successfully deleted your account");
+  res.redirect("/users/register");
 });
 
 
