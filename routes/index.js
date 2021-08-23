@@ -20,9 +20,20 @@ router.get('/viewEmployees',ensureAuthenticated, viewemployeesAuth(["employer"])
   res.render('viewEmployees',{user:req.user, data:data});
 });
 
+
+// Edit Email
+router.put('/edit',ensureAuthenticated, async function(req, res, next) {
+  const {name} = req.body;
+  console.log("name",name);
+  await User.updateOne({_id: req.user._id}, {$set: {name: name }}).catch(err=> console.error(err));
+
+  res.redirect('dashboard');
+});
+
+
 // Delete Account
 router.get('/delete' ,ensureAuthenticated, async function(req, res, next) {
-  await User.findById(req.user._id).catch((err) =>
+  await User.findByIdAndRemove(req.user._id).catch((err) =>
   console.error(err));
   req.logout();
   req.flash("success_msg", "You successfully deleted your account");

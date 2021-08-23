@@ -23,7 +23,6 @@ router.get('/login',forwardAuthenticated, function(req, res, next) {
 // Post Register
 router.post("/register", (req, res) => {
   const { name, email, password, password2, role} = req.body;
-  console.log("role: ", role);
 
   const errors = [];
 
@@ -92,7 +91,6 @@ router.post("/register", (req, res) => {
                       newUser
                           .save()
                           .then(user => {
-                              console.log("NewUser",newUser);
                               res.redirect('/users/login')})
                           .catch(err => console.log(err))
               }))

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const passport= require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -16,6 +17,7 @@ var usersRouter = require('./routes/users');
 
 
 var app = express();
+app.use(express.json());
 
 // EJS
 app.use(expressLayouts);
@@ -54,6 +56,10 @@ mongoose
     })
     .then(() => console.log("Connected DB"))
     .catch((err) => console.log(err));
+
+
+// Method Override
+app.use(methodOverride("_method"));
 
 
 // Passport middleware

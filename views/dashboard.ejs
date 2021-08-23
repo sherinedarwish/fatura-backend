@@ -1,5 +1,5 @@
 
-<head style="background-color: #edd3bc; ">
+<head style="background-color: #1f1e1e; ">
       
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #edd3bc; ">
       <a class="navbar-brand" href="/dashboard">
@@ -23,9 +23,8 @@
 </head>
 
 
-<body style="background-color: #edd3bc; background-repeat: no-repeat" >
+<body style="background-color: #1f1e1e; background-repeat: no-repeat" >
   <div class="card text-center">
-   
     <div class="card-body">
       <h5 class="card-title"></h5>
       <%- include ('./partials/messages') %>
@@ -36,34 +35,45 @@
             <span class="input-group-text">Welcome <%= user.name %></span>
           </div>
         </div>
-          <form action="/viewEmployees" method="GET" >
-            <div class="form-group" style="font-size: large;" >
-                <label for="View">View all Employees</label> 
-                <button type="submit" class="btn btn-primary btn">
-                  View
-                </button>
-            </div>
+        <form action="/viewEmployees" method="GET" >
+          <div class="form-group" style="font-size: large;" >
+              <label for="View">View all Employees</label> 
+              <button type="submit" class="btn btn-primary btn">
+                View
+              </button>
+          </div>
+        </form>
 
-            <form action="/edit" method="GET" >
-              <div class="form-group" style="font-size: large;" >
-                  <label for="View">View all Employees</label> 
-                  <button type="submit" class="btn btn-primary btn">
-                    View
-                  </button>
+        <form action="/edit?_method=PUT" method="POST" >
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Edit your name</span>
               </div>
-            </form>
-
+              <textarea  style="color: white"
+                class="form-control" 
+                aria-label="With textarea"
+                type="name"
+                id="name"
+                name="name"
+                class="form-control"
+                value="<%= user.name %>"
+                placeholder= <%= user.name %>
+              ></textarea>
+              
+                <button type="submit" class="btn btn-primary btn">
+                  Edit
+                </button>
+              </form>
+            </div>
+            <br><br>
             <form action="/delete" method="GET" >
               <div class="form-group" style="font-size: large;" >
                   <label for="delete">Delete Account</label> 
                   <button type="submit" class="btn btn-danger btn">
-                    View
+                    Delete
                   </button>
               </div>
-
-          
+            </form>    
       </div>
-
   </div>
-
 </body>
