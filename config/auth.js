@@ -21,6 +21,8 @@ const viewemployeesAuth = ( Permissions) =>
       next()
     }
     else {
+      req.flash('error_msg', 'This content is not authorized for you');
+      res.redirect('/dashboard')
       return console.error("You don't have permission to access");
     }
   }

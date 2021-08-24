@@ -9,7 +9,9 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const passport= require("passport");
 const flash = require("connect-flash");
-const session = require("express-session");
+//const session = require("express-session");
+const session = require("cookie-session");
+
 
 // Routes
 var indexRouter = require('./routes/index');
@@ -18,6 +20,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 // EJS
 app.use(expressLayouts);
@@ -35,7 +38,6 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -43,8 +45,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
       secret: "secret",
-      resave: true,
+      resave: false,
       saveUninitialized: true,
+      maxAge: 1000 * 60 * 60,
+      cookie:{
+        secure: true
+           }
   })
 );
 

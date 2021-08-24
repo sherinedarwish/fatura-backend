@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require("../models/User");
 const { ensureAuthenticated,viewemployeesAuth } = require("../config/auth");
 
-
 //Home Page
 router.get('/',ensureAuthenticated, function(req, res, next) {
   res.render('index');
