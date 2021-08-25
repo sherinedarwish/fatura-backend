@@ -1,7 +1,7 @@
 # Fatura-backend
 
 An authenticated and authorizated application that the user can register , login , logout and have a specific role either an employee or employer.
-The employer has only the authority to view all the registerd employees but the employee does not have this previlige.
+Only the employer has the authority to view all the registerd employees but the employee does not have this previlige.
 
 
 The user can:
@@ -12,3 +12,13 @@ The user can:
 
 # Web App Link
 https://fatura-task.herokuapp.com/users/login 
+
+# Technologies Used
+1. NodeJS
+1. Express
+1. MongoDB
+1. EJS
+1. Mongoose
+1. PassportJS
+
+# Installation
