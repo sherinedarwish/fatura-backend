@@ -26,7 +26,7 @@ https://fatura-task.herokuapp.com/users/login
 `git clone https://github.com/sherinedarwish/fatura-backend.git`
 
 ### Open the project directory
-`cd fatura`
+`cd fatura-backend`
 
 ### Installing npm 
 `npm install`
@@ -34,6 +34,6 @@ https://fatura-task.herokuapp.com/users/login
 ### Insert the .env file, the example is attached already
 
 ### Then start the app
-`npm start`
+`node app`
 
 The server now should be running at http://localhost:3000
