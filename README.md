@@ -22,3 +22,18 @@ https://fatura-task.herokuapp.com/users/login
 1. PassportJS
 
 # Installation
+### Clone the github Repository
+`git clone https://github.com/sherinedarwish/fatura-backend.git`
+
+### Open the project directory
+`cd fatura`
+
+### Installing npm 
+`npm install`
+
+### Insert the .env file, the example is attached already
+
+### Then start the app
+`npm start`
+
+The server now should be running at http://localhost:3000
